@@ -37,7 +37,7 @@ CREATE TABLE Category (
     CategoryName VARCHAR(50) NOT NULL,
     Description VARCHAR(200),
     EventID INT NOT NULL,
-    FOREIGN KEY (EventID) REFERENCES Event(EventID)
+    FOREIGN KEY (EventID) REFERENCES Event(EventID) 
 );
 
 CREATE TABLE Enrolment (
