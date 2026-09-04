@@ -1,3 +1,9 @@
+-- RACEDAY DATABASE SCRIPT
+-- PROG6212 - Part 1
+-- Student: Moloko Dineo Mothemela
+-- Student Number: ST10460465
+
+
 CREATE DATABASE RaceDay;
 GO
 
