@@ -1,3 +1,5 @@
+[![.github/workflows/blank.yml](https://github.com/moloko04/PROG6212_POE_Part1/actions/workflows/blank.yml/badge.svg)](https://github.com/moloko04/PROG6212_POE_Part1/actions/workflows/blank.yml)
+
 PROG6212 - Part 1: RaceDay Event Management System
 
 Project Overview
