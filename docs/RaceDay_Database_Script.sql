@@ -7,7 +7,7 @@
 CREATE DATABASE RaceDay;
 GO
 
-USE RaceDay;
+USE RaceDay; 
 GO
 
 CREATE TABLE [User] (
