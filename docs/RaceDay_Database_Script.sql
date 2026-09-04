@@ -3,7 +3,7 @@
 -- Student: Moloko Dineo Mothemela
 -- Student Number: ST10460465
 
-
+ 
 CREATE DATABASE RaceDay;
 GO
 
