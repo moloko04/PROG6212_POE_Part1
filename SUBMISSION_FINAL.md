@@ -22,4 +22,4 @@ Deliverables Checklist
 -  CI/CD Pipeline (Green Build)
 
 YouTube Video
-[Watch explanation video here]()
+[Watch explanation video here](https://youtu.be/urPLhX4svBg?si=cZcqkqXx9Ob3pIJX)
