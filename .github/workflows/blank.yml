@@ -1,0 +1,62 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: List files in repository
+      run: |
+        echo "Repository contents:"
+        ls -la
+        echo ""
+        echo "Checking if docs folder exists..."
+        if [ -d "docs" ]; then
+          echo "✅ docs folder found!"
+          echo ""
+          echo "Files in docs folder:"
+          ls -la docs/
+        else
+          echo "❌ docs folder not found!"
+          exit 1
+        fi
+
+    - name: Verify SQL file exists
+      run: |
+        if [ -f "docs/RaceDay_Database_Script.sql" ]; then
+          echo "✅ SQL file found!"
+        else
+          echo "❌ SQL file not found!"
+          exit 1
+        fi
+
+    - name: Verify ERD exists
+      run: |
+        if [ -f "docs/ERD_RaceDay.png" ]; then
+          echo "✅ ERD file found!"
+        else
+          echo "❌ ERD file not found!"
+          exit 1
+        fi
+
+    - name: Verify API Plan exists
+      run: |
+        if [ -f "docs/API_Endpoint_Plan.docx" ] || [ -f "docs/API_Endpoint_Plan.pdf" ]; then
+          echo "✅ API Plan file found!"
+        else
+          echo "❌ API Plan file not found!"
+          exit 1
+        fi
+
+    - name: Success message
+      run: |
+        echo "✅✅✅ All Part 1 deliverables are present! ✅✅✅"
+        echo "CI Pipeline passed successfully!"
