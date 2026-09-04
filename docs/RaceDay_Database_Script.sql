@@ -16,7 +16,7 @@ CREATE TABLE [User] (
     PasswordHash VARCHAR(255) NOT NULL,
     FullName VARCHAR(100) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
-    Role VARCHAR(20) NOT NULL CHECK (Role IN ('Organiser', 'Participant', 'Admin')),
+    Role VARCHAR(20) NOT NULL CHECK (Role IN ('Organiser', 'Participant', 'Admin')), 
     CreatedDate DATETIME DEFAULT GETDATE()
 );
 
