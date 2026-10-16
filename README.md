@@ -1,7 +1,7 @@
 PROG6212 - RaceDay Event Management System
 
 CI/CD Status
-![CI Pipeline](https://github.com/moloko04/PROG6212_POE_Part1/actions/workflows/dotnet-tests.yml/badge.svg)
+![CI Pipeline](https://github.com/moloko04/PROG6212_POE_Part1/actions/workflows/blank.yml/badge.svg)
 
 Student Information
 - Student Name: Moloko Dineo Mothemela
