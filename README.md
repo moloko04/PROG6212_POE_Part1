@@ -52,4 +52,5 @@ CI/CD
 This project uses GitHub Actions to automatically build the project and run all unit tests on every push to the main branch.
 
 YouTube Video
-[Watch my explanation video here](https//:youtu.be/4-03rgF-EYw?si=NbKrmF4zRfgPpzFY)
+[Watch my explanation video here] (https://youtu.be/4-03rgF-EYw?si=o32i7E7EeRuwlqd7)
+
