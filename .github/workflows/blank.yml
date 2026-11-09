@@ -17,7 +17,7 @@ jobs:
         dotnet-version: '8.0.x'
         
     - name: Build Main API
-      run: dotnet build *.csproj
+      run: dotnet build RaceDay.API.csproj
       
     - name: Build Web App
-      run: dotnet build RaceDay.Web/*.csproj
+      run: dotnet build RaceDay.Web/RaceDay.Web.csproj
