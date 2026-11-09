@@ -1,8 +1,8 @@
-name: .NET CI
+name: .NET Build and Tests
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -10,14 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-        
-    - name: Build Main API
-      run: dotnet build RaceDay.API.csproj
-      
-    - name: Build Web App
-      run: dotnet build RaceDay.Web/RaceDay.Web.csproj
+
+    - name: Build API
+      run: dotnet build RaceDay.API.csproj --configuration Release
