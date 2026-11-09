@@ -1,20 +1,23 @@
-name: .NET Build and Tests
+name: .NET CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ "main", "master" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-
-    - name: Build API
-      run: dotnet build RaceDay.API.csproj --configuration Release
-
-    - name: Build MVC Web
-      run: dotnet build RaceDay.Web/RaceDay.Web.csproj --configuration Release
+        
+    - name: Build Main API
+      run: dotnet build *.csproj
+      
+    - name: Build Web App
+      run: dotnet build RaceDay.Web/*.csproj
