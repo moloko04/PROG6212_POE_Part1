@@ -1,0 +1,50 @@
+﻿@model IEnumerable<RaceDay.Web.Models.EnrolmentViewModel>
+
+@{
+    ViewData["Title"] = "My Enrolments";
+}
+
+<h2 class="mt-4 mb-3">My Events</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<table class="table table-striped shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EventName</td>
+                    <td>@item.EventDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        @if (item.Status == "Confirmed")
+                        {
+                            <span class="badge bg-success">Confirmed</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">@item.Status</span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">You have not enrolled in any events yet.</td>
+            </tr>
+        }
+    </tbody>
+</table>
