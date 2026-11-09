@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using RaceDay.Api.Data;
 using RaceDay.Api.Models;
 using System.Security.Claims;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace RaceDay.Api.Controllers;
 
@@ -70,5 +72,30 @@ public class EventsController : ControllerBase
         _context.Events.Remove(ev);
         await _context.SaveChangesAsync();
         return Ok(new { message = "Event deleted successfully" });
+    }
+
+    [HttpPost("{eventId}/upload-image")]
+    [Authorize(Roles = "Organiser")]
+    public async Task<IActionResult> UploadEventImage(int eventId, IFormFile file)
+    {
+        var ev = await _context.Events.FindAsync(eventId);
+        if (ev == null) return NotFound();
+
+        var connectionString = "UseDevelopmentStorage=true";
+        var blobServiceClient = new BlobServiceClient(connectionString);
+
+        var containerClient = blobServiceClient.GetBlobContainerClient("event-images");
+        await containerClient.CreateIfNotExistsAsync(PublicAccessType.Blob);
+
+        var blobClient = containerClient.GetBlobClient($"{eventId}_{file.FileName}");
+        using (var stream = file.OpenReadStream())
+        {
+            await blobClient.UploadAsync(stream, true);
+        }
+
+        ev.ImageUrl = blobClient.Uri.ToString();
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "Image uploaded successfully", imageUrl = ev.ImageUrl });
     }
 }
