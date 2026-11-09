@@ -1,0 +1,30 @@
+@model IEnumerable<RaceDay.Web.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<h2 class="mt-4 mb-3">Upcoming Events</h2>
+
+<div class="row">
+    @foreach (var ev in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                @if (!string.IsNullOrEmpty(ev.ImageUrl))
+                {
+                    <img src="@ev.ImageUrl" class="card-img-top" alt="Event Image" style="height: 200px; object-fit: cover;" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@ev.EventName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@ev.EventDate.ToString("dd MMM yyyy")</h6>
+                    <p class="card-text">@ev.Location</p>
+                    <p class="card-text"><small class="text-muted">@ev.Description</small></p>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    <a asp-action="Details" asp-route-id="@ev.EventID" class="btn btn-outline-primary w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
