@@ -12,8 +12,14 @@ jobs:
     - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-    - name: Build and Test
+        
+    - name: Build and Test API and Web
       run: |
-        dotnet restore
-        dotnet build --no-restore
-        dotnet test --no-build
+        echo "Building Root Project..."
+        dotnet build *.csproj --configuration Release
+        
+        echo "Building Web Project..."
+        dotnet build RaceDay.Web/RaceDay.Web.csproj --configuration Release
+        
+        echo "Running Tests..."
+        dotnet test RaceDay.API.Tests/RaceDay.API.Tests.csproj --configuration Release
