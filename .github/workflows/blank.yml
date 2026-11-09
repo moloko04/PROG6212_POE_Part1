@@ -7,7 +7,7 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,13 +20,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore RaceDay.API/RaceDay.API.csproj
+      run: dotnet restore RaceDay.API.sln
 
-    - name: Build API
-      run: dotnet build RaceDay.API/RaceDay.API.csproj --no-restore --configuration Release
+    - name: Build the solution
+      run: dotnet build RaceDay.API.sln --no-restore --configuration Release
 
-    - name: Build MVC Web
-      run: dotnet build RaceDay.Web/RaceDay.Web.csproj --no-restore --configuration Release
-
-    - name: Run Tests
-      run: dotnet test RaceDay.API.Tests/RaceDay.API.Tests.csproj --no-build --configuration Release --verbosity normal
+    - name: Run tests
+      run: dotnet test RaceDay.API.sln --no-build --configuration Release --verbosity normal
