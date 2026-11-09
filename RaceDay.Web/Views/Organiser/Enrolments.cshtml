@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RaceDay.Web.Models.EnrolmentViewModel>
+@{
+    ViewData["Title"] = "Event Enrolments";
+}
+
+<h2>Enrolments</h2>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Participant</th>
+            <th>Status</th>
+            <th>Capture Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ParticipantName</td>
+                <td><span class="badge bg-success">@item.Status</span></td>
+                <td>
+                    <form asp-action="CaptureResult" method="post" class="d-flex gap-2">
+                        <input type="hidden" name="enrolmentId" value="@item.EnrolmentID" />
+                        <input type="hidden" name="eventId" value="@ViewBag.EventId" />
+                        <input type="text" name="finishTime" placeholder="01:30:00" class="form-control form-control-sm" required />
+                        <input type="number" name="position" placeholder="Pos" class="form-control form-control-sm" required />
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
