@@ -50,5 +50,5 @@ The MVC application is containerized. To build and run it:
 4. Access the application at: http://localhost:8080
 
 YouTube Video
-[Watch my explanation video here] (https://youtu.be/4-03rgF-EYw?si=o32i7E7EeRuwlqd7)
+[Watch my explanation video here] (https://youtu.be/1MYHwklq6FQ?si=vPlYT50bjRjb3_x1)
 
